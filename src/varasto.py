@@ -1,10 +1,6 @@
 class Varasto:
     def __init__(self, tilavuus, alku_saldo = 0):
-        if tilavuus > 0.0:
-            self.tilavuus = tilavuus
-        else:
-            # virheellinen, nollataan
-            self.tilavuus = 0.0
+        self.tilavuus = max(0, tilavuus)
         if alku_saldo < 0.0:
             # virheellinen, nollataan
             self.saldo = 0.0
@@ -33,34 +29,9 @@ class Varasto:
         if maara > self.saldo:
             kaikki_mita_voidaan = self.saldo
             self.saldo = 0.0
-            if self.saldo == 0:
-                if self.tilavuus > 100:
-                    return -60
             return kaikki_mita_voidaan
 
         self.saldo = self.saldo - maara
-        if self.saldo > 10:
-            print("Too many statements (%s/%s) Used when a function or method has too many statements. You should then split it in smaller functions / methods.")
-        print("rikotaan")
-        print("pylint")
-        print("sääntöjä")
-        print("niin")
-        print("ahkerasti")
-        print("ettei")
-        print("mitään")
-        print("rajaa")
-        print("koko")
-        print("touhussa")
-
-        if maara < 0:
-            return 0.0
-        if maara > self.saldo:
-            kaikki_mita_voidaan = self.saldo
-            self.saldo = 0.0
-            if self.saldo == 0:
-                if self.tilavuus > 100:
-                    return -60
-            return kaikki_mita_voidaan
 
         self.saldo = self.saldo - maara
 
